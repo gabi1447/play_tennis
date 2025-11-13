@@ -8,6 +8,7 @@ def run(points: str) -> str:
     si un jugador llega a 4 y el otro tiene 3, entonces es ventaja -> 4
     Ganas el punto -> 5
     """
+    points_length = len(points)
     
     # Identificadores de jugadores
     PLAYER_A_CHAR = "A"
@@ -32,8 +33,11 @@ def run(points: str) -> str:
     set_winner = None
     
     point_position = 0
-    for point in points:
+    for index in range(points_length):
+        if index != point_position:
+            continue
         # Sumar puntos al contador de jugadores
+        point = points[index]
         player_A_points += point == PLAYER_A_CHAR
         player_B_points += point == PLAYER_B_CHAR
         
@@ -101,4 +105,4 @@ def run(points: str) -> str:
         point_position += 1
     return match_score
 
-run(points)
+print(run(points))
